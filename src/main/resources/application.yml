@@ -1,1 +1,6 @@
-
+server:
+  servlet:
+    session:
+      cookie:
+        max-age: 86400 #czas ?ycia ciasteczka w sekundach
+      timeout: 1440 #czas utrzymania sesji po stronie servera w minutach
