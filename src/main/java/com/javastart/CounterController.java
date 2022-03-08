@@ -8,17 +8,15 @@ import javax.servlet.http.HttpSession;
 @Controller
 public class CounterController {
 
-    private static final String COUNTER_NAME = "counter";
+    private CounterService counterService;
+
+    public CounterController(CounterService counterService) {
+        this.counterService = counterService;
+    }
 
     @GetMapping("/")
     String counter(HttpSession session){
-        Integer counter = (Integer) session.getAttribute(COUNTER_NAME);
-        if (counter!=null){
-            counter++;
-        }else {
-            counter = 1;
-        }
-        session.setAttribute(COUNTER_NAME,counter);
+        counterService.increment();
         return "index";
     }
 }
